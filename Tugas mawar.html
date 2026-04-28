@@ -1,0 +1,45 @@
+<div class="table-container"> <!-- Container utama tabel --> mawar
+
+    <h3>📋 Data Mahasiswa</h3> <!-- Judul tabel -->
+
+    <table> <!-- Membuat tabel -->
+
+        <thead> <!-- Bagian kepala tabel -->
+            <tr> <!-- Baris header -->
+                <th>No</th> <!-- Kolom nomor -->
+                <th>NIM</th> <!-- Kolom NIM -->
+                <th>Nama</th> <!-- Kolom Nama -->
+                <th>JK</th> <!-- Kolom Jenis Kelamin -->
+                <th>Aksi</th> <!-- Kolom aksi -->
+            </tr>
+        </thead>
+
+        <tbody> <!-- Isi data tabel -->
+            <tr> <!-- Baris awal -->
+                <td colspan="5">Belum ada data</td> <!-- Jika data kosong -->
+            </tr>
+        </tbody>
+
+    </table>
+</div>
+
+<script>
+const row = ` <!-- Membuat baris data baru -->
+<tr>
+    <td>${no++}</td> <!-- Nomor otomatis -->
+    <td>${nim}</td> <!-- Menampilkan NIM -->
+    <td>${nama}</td> <!-- Menampilkan Nama -->
+    <td>${jk}</td> <!-- Menampilkan JK -->
+    <td>-</td> <!-- Kolom aksi -->
+</tr>
+`;
+
+tbody.innerHTML += row; <!-- Menambahkan row ke tabel -->
+
+form.reset(); <!-- Mengosongkan form -->
+
+}); <!-- Penutup event submit -->
+</script>
+
+</body> <!-- Penutup body -->
+</html> <!-- Penutup html -->
