@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Manajemen Mahasiswa</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #fceabb, #f8b500);
+    margin: 0;
+    padding: 20px;
+}
+
+/* CARD UTAMA */
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: linear-gradient(135deg, #ffd200, #ff9a00);
+    padding: 25px;
+    border-radius: 15px;
+    color: #333;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* TITLE */
+h2 {
+    text-align: center;
+}
+
+/* INPUT */
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: none;
+}
+
+/* FLEX ROW */
+.row {
+    display: flex;
+    gap: 10px;
+}
+
+/* BUTTON */
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* ✅ SUBMIT JADI HIJAU */
+.submit {
+    background: #00c853; /* hijau */
+    color: white;
+}
+
+/* RESET */
+.reset {
+    background: #ff4d4d;
+    color: white;
+}
+
+/* TABLE */
+.table-container {
+    max-width: 600px;
+    margin: 20px auto;
+    background: linear-gradient(135deg, #ffd200, #ff9a00);
+    padding: 20px;
+    border-radius: 15px;
+    color: #333;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    border-bottom: 2px solid #333;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>📌 Manajemen Mahasiswa</h2>
+
+    <form>
+        <div class="row">
+            <input type="text" placeholder="NIM">
+            <input type="text" placeholder="Nama Lengkap">
+        </div>
+
+        <textarea placeholder="Alamat"></textarea>
+
+        <div class="row">
+            <select>
+                <option>Jenis Kelamin</option>
+                <option>Pria</option>
+                <option>Wanita</option>
+            </select>
+
+            <input type="password" placeholder="Password">
+        </div>
+
+        <button class="submit">+ Input Data</button>
+        <button class="reset">Reset</button>
+    </form>
+</div>
+
+<div class="table-container">   <!-- Container utama tabel --> mawar
+
+    <h3>📋 Data Mahasiswa</h3> <!-- Judul tabel data mahasiswa -->
+
+    <table> <!-- Awal tabel -->
+        <thead> <!-- Bagian kepala tabel -->
+            <tr> <!-- Baris judul -->
+                <th>No</th> <!-- Nomor urut -->
+                <th>NIM</th> <!-- Kolom NIM -->
+                <th>Nama</th> <!-- Kolom Nama -->
+                <th>JK</th> <!-- Kolom Jenis Kelamin -->
+                <th>Aksi</th> <!-- Kolom aksi -->
+            </tr>
+        </thead>
+
+        <tbody> <!-- Isi data tabel -->
+            <tr>
+                <td colspan="5">Belum ada data</td> <!-- Pesan jika tabel kosong -->
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+const form = document.querySelector("form");
+const tbody = document.querySelector("tbody"); 
+
+let no = 1; // Nomor urut dimulai dari 1
+
+form.addEventListener("submit", function(e) { // Saat form disubmit
+    e.preventDefault(); // Mencegah reload halaman
+
+    const nim = form.querySelectorAll("input")[0].value; // Ambil input NIM
+    const nama = form.querySelectorAll("input")[1].value; // Ambil input Nama
+    const jk = form.querySelector("select").value; // Ambil pilihan JK
+
+    // Jika masih ada tulisan belum ada data, hapus dulu
+    if (tbody.children.length === 1 && tbody.children[0].innerText.includes("Belum ada")) {
+        tbody.innerHTML = "";
+    }
+
+    // Membuat baris data baru
+    const row = ` mawar
+        <tr>
+            <td>${no++}</td> <!-- Nomor otomatis -->
+            <td>${nim}</td> <!-- Menampilkan NIM -->
+            <td>${nama}</td> <!-- Menampilkan Nama -->
+            <td>${jk}</td> <!-- Menampilkan JK -->
+            <td>-</td> <!-- Kolom aksi -->
+        </tr>
+    `;
+
+    tbody.innerHTML += row; // Menambahkan baris ke tabel
+
+    form.reset(); // Mengosongkan form setelah submit
+});
+</script>
+
+</body>
+</html>
